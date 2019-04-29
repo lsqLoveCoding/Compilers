@@ -1,0 +1,23 @@
+P -> S' | D
+D -> T id ; D' | proc id ( Plist ) ; D' S' D'
+D' -> ¦Å | D D'
+T -> X C | record D
+X -> int | real
+C -> ¦Å | [ intd ] C
+Plist -> ¦Å | T id Plist'
+Plist' -> ¦Å | , T id Plist'
+S -> L = E ; | call id ( Elist ) ; | if B then S EL | do S' while B
+EL -> ¦Å | else S
+S' -> ¦Å | S S'
+B -> E OP E B' | not B B' | ( B ) B' | true B' | false B'
+B' -> ¦Å | or B B' | and B B'
+OP -> < | <= | == | != | > | >=
+Elist -> ¦Å | E Elist'
+Elist' -> ¦Å | , E Elist'
+E -> F E'
+E' -> ¦Å | + F E'
+F -> G F'
+F' -> ¦Å | * G F'
+G -> - G | ( E ) | reald | intd | L
+L -> id L'
+L' -> [ E ] L' | ¦Å
